@@ -71,7 +71,7 @@ class EventsContainer extends Component {
     })
   }
 
-  editEvent(id, title, description, start_date, end_date) {
+  editEvent = (id, title, description, start_date, end_date) => {
     axios.put('/api/v1/events/' + id, {
       event: {
         title,

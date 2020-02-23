@@ -14,22 +14,24 @@ const NewEventForm = ({ onNewEvent = f => f }) => {
   return (
     <div className='event-form' id='event-form'>
       <form onSubmit={submit}>
-        <label>Event Name</label>
-        <input ref={input => title = input}
-          type="text"
-          placeholder="Title..." required />
-        <label>Description</label>
-        <input ref={input => description = input}
-          type="text"
-          placeholder="Description..." required />
-        <label>Start</label>
-        <input ref={input => start_date = input}
-          type="date" />
-        <label>End</label>
-        <input ref={input => end_date = input}
-          type="date" />
+        <div className="input-div">
+          <label>Event Name</label>
+          <input ref={input => title = input}
+            type="text"
+            placeholder="Title..." required />
+          <label>Description</label>
+          <input ref={input => description = input}
+            type="text"
+            placeholder="Description..." required />
+          <label>Start</label>
+          <input ref={input => start_date = input}
+            type="date" required />
+          <label>End</label>
+          <input ref={input => end_date = input}
+            type="date" required />
+        </div>
         <div className="submit-div">
-          <button className="new-event-submit-btn">Add Event</button>
+          <button className="new-event-submit-btn">Add</button>
         </div>
       </form>
     </div>
