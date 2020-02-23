@@ -2,19 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Event from './Event';
 import EditEventForm from './EditEventForm';
+import NewEventForm from './NewEventForm';
 
 class EventsContainer extends Component {
-  // constructor(props) {
-  //   super(props)
-  //   this.state = {
-  //     events: [],
-  //     editingEventId: null
-  //   }
-  //   this.addNewEvent = this.addNewEvent.bind(this)
-  //   this.removeEvent = this.removeEvent.bind(this)
-  //   this.editingEvent = this.editingEvent.bind(this)
-  //   this.editEvent = this.editEvent.bind(this)
-  // }
+
   state = {
     events: [],
     editingEventId: null
@@ -34,25 +25,26 @@ class EventsContainer extends Component {
 
     axios.get('api/v1/events.json', { formats })
       .then(response => {
-        console.log(response)
+        const events = this.handleSort(response.data)
         this.setState({
-          events: response.data
+          events
         })
       })
-      .catch(error => console.log(error))
+      .catch(error => alert(error.response))
   }
 
-  addNewEvent(title, description, start_date, end_date) {
+  //CREATE
+  addNewEvent = (title, description, start_date, end_date) => {
     axios.post('/api/v1/events', { event: { title, description, start_date, end_date } })
       .then(response => {
-        console.log(response)
         const events = [...this.state.events, response.data]
         this.setState({ events })
       })
       .catch(error => { alert("Please try again") })
   }
 
-  removeEvent(id) {
+  //DELETE
+  removeEvent = (id) => {
     axios.delete('/api/v1/events/' + id)
       .then(response => {
         const events = this.state.events.filter(
@@ -60,11 +52,17 @@ class EventsContainer extends Component {
         )
         this.setState({ events })
       })
-      .catch(error => { alert("Please try again") })
+      .catch(error => console.log(error.response))
   }
 
+  //UPDATE
+  editingEvent = (id) => {
+    this.setState({
+      editingEventId: id
+    })
+  }
 
-  editEvent(id, title, description, start_date, end_date) {
+  editEvent = (id, title, description, start_date, end_date) => {
     axios.put('/api/v1/events/' + id, {
       event: {
         title,
@@ -74,19 +72,22 @@ class EventsContainer extends Component {
       }
     })
       .then(response => {
-        console.log(response);
-        const events = this.state.events;
-        events[id - 1] = { id, title, description, start_date, end_date }
-        this.setState(() => ({
+        const updatedEvent = response.data
+        const newList = this.state.events.filter((event) => event.id !== updatedEvent.id)
+        newList.push(updatedEvent)
+
+        const events = this.handleSort(newList)
+        this.setState({
           events,
           editingEventId: null
-        }))
+        })
       })
-      .catch(error => console.log(error));
+      .catch(error => alert("Please try again"));
   }
 
   render() {
     return (
+
       <div className="events-container">
         {this.state.events.map((event) => {
           if (this.state.editingEventId === event.id) {
@@ -107,6 +108,9 @@ class EventsContainer extends Component {
           }
         })
         }
+        <br />
+        <NewEventForm onNewEvent={this.addNewEvent} />
+        <br />
       </div>
 
     )
