@@ -1,20 +1,7 @@
-/**
- * Events
- */
-
 import moment from 'moment'
 import Event from '../events/Event'
 
-const Events = [
-  // {
-  //   allDay: true,
-  //   color: 'green',
-  //   title: { event.title }
-  //   date: moment()
-  //     .date(2)
-  //     .format('YYYY-MM-DD'),
-  //   description: { event.description },
-  // },
+export const Events = [
   {
     borderColor: 'black',
     color: 'grey',
@@ -29,15 +16,5 @@ const Events = [
     title: 'PPM: Boiler Check'
   },
 ]
-export default Events
-// export const AvailableViews = [
-//   'dayGridMonth',
-//   'dayGridWeek',
-//   'dayGridDay',
-//   'dayGrid',
-//   'timeGridWeek',
-//   'timeGridDay',
-//   'timeGrid'
-//   // 'listYear','listMonth','listWeek','listDay','list',
-//   // 'timelineYear', 'timelineMonth', 'timelineWeek', 'timelineDay', 'timeline'
-// ]
+// export default Events
+

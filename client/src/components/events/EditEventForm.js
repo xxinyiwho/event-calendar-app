@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 class EditEventForm extends Component {
   constructor(props) {
     super(props)

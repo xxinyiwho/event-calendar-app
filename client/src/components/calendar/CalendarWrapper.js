@@ -6,6 +6,7 @@ import '@fullcalendar/core/main.css'
 import '@fullcalendar/daygrid/main.css'
 import '@fullcalendar/timegrid/main.css'
 import React, { Component } from 'react'
+import Events from './Events'
 
 const CalendarWrapper = props => {
   return (
@@ -14,6 +15,7 @@ const CalendarWrapper = props => {
       plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
       ref={props.forwardedRef}
       {...props}
+      events={props.events}
     />
   )
 }

@@ -5,7 +5,6 @@ import Header from './components/events/Header';
 import NewEventForm from './components/events/NewEventForm';
 import EditEventForm from './components/events/EditEventForm';
 import Calendar from './components/calendar/index';
-import Events from './components/calendar/Events'
 
 class App extends Component {
   render() {

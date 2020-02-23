@@ -34,25 +34,26 @@ class EventsContainer extends Component {
 
     axios.get('api/v1/events.json', { formats })
       .then(response => {
-        console.log(response)
+        const events = this.handleSort(response.data)
         this.setState({
-          events: response.data
+          events
         })
       })
-      .catch(error => console.log(error))
+      .catch(error => alert(error.response))
   }
 
-  addNewEvent(title, description, start_date, end_date) {
+  //CREATE
+  addNewEvent = (title, description, start_date, end_date) => {
     axios.post('/api/v1/events', { event: { title, description, start_date, end_date } })
       .then(response => {
-        console.log(response)
         const events = [...this.state.events, response.data]
         this.setState({ events })
       })
       .catch(error => { alert("Please try again") })
   }
 
-  removeEvent(id) {
+  //DELETE
+  removeEvent = (id) => {
     axios.delete('/api/v1/events/' + id)
       .then(response => {
         const events = this.state.events.filter(
@@ -60,9 +61,15 @@ class EventsContainer extends Component {
         )
         this.setState({ events })
       })
-      .catch(error => { alert("Please try again") })
+      .catch(error => console.log(error.response))
   }
 
+  //UPDATE
+  editingEvent = (id) => {
+    this.setState({
+      editingEventId: id
+    })
+  }
 
   editEvent(id, title, description, start_date, end_date) {
     axios.put('/api/v1/events/' + id, {
@@ -74,15 +81,17 @@ class EventsContainer extends Component {
       }
     })
       .then(response => {
-        console.log(response);
-        const events = this.state.events;
-        events[id - 1] = { id, title, description, start_date, end_date }
-        this.setState(() => ({
+        const updatedEvent = response.data
+        const newList = this.state.events.filter((event) => event.id !== updatedEvent.id)
+        newList.push(updatedEvent)
+
+        const events = this.handleSort(newList)
+        this.setState({
           events,
           editingEventId: null
-        }))
+        })
       })
-      .catch(error => console.log(error));
+      .catch(error => alert("Please try again"));
   }
 
   render() {
