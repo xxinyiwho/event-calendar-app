@@ -2,19 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Event from './Event';
 import EditEventForm from './EditEventForm';
+import NewEventForm from './NewEventForm';
 
 class EventsContainer extends Component {
-  // constructor(props) {
-  //   super(props)
-  //   this.state = {
-  //     events: [],
-  //     editingEventId: null
-  //   }
-  //   this.addNewEvent = this.addNewEvent.bind(this)
-  //   this.removeEvent = this.removeEvent.bind(this)
-  //   this.editingEvent = this.editingEvent.bind(this)
-  //   this.editEvent = this.editEvent.bind(this)
-  // }
+
   state = {
     events: [],
     editingEventId: null
@@ -96,6 +87,7 @@ class EventsContainer extends Component {
 
   render() {
     return (
+
       <div className="events-container">
         {this.state.events.map((event) => {
           if (this.state.editingEventId === event.id) {
@@ -116,6 +108,9 @@ class EventsContainer extends Component {
           }
         })
         }
+        <br />
+        <NewEventForm onNewEvent={this.addNewEvent} />
+        <br />
       </div>
 
     )

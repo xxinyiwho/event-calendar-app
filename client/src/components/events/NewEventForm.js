@@ -2,6 +2,7 @@ import React from 'react';
 
 const NewEventForm = ({ onNewEvent = f => f }) => {
   let title, description, start_date, end_date
+
   const submit = e => {
     e.preventDefault()
     onNewEvent(title.value, description.value, start_date.value, end_date.value)
