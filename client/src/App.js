@@ -3,7 +3,6 @@ import './App.css';
 import Header from './components/events/Header';
 import EventsContainer from './components/events/EventsContainer';
 import Calendar from './components/calendar/index';
-// import EventsList from './components/calendar/EventsList'
 
 class App extends Component {
   render() {
@@ -12,7 +11,6 @@ class App extends Component {
         <Header />
         <EventsContainer />
         <Calendar />
-        {/* <EventsList /> */}
       </div>
     );
   }
