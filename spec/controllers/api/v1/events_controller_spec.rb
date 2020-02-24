@@ -3,7 +3,7 @@ require 'pry-byebug'
 require "json"
 
 RSpec.describe Api::V1::EventsController do
-  let!(:events) { create_list(:event, 10) }
+  let!(:events) { create_list(:event, 2) }
   let(:event_id) { events.first.id }
 
   # PARSING DATA

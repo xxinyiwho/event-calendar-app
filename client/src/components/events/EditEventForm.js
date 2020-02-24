@@ -7,8 +7,8 @@ class EditEventForm extends Component {
       id: this.props.event.id,
       title: this.props.event.title,
       description: this.props.event.description,
-      start_date: this.props.event.start_date,
-      end_date: this.props.event.end_date
+      start: this.props.event.start,
+      end: this.props.event.end
     }
   }
 
@@ -22,8 +22,8 @@ class EditEventForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    const { id, title, description, start_date, end_date } = this.state.edit
-    this.props.editEvent(id, title, description, start_date, end_date);
+    const { id, title, description, start, end } = this.state.edit
+    this.props.editEvent(id, title, description, start, end);
   }
 
   render() {
@@ -42,12 +42,12 @@ class EditEventForm extends Component {
         <input name="Start date"
           type="date"
           placeholder="Description..."
-          value={this.state.edit.start_date}
+          value={this.state.edit.start}
           onChange={this.handleChange} />
         <input name="End date"
           type="text"
           placeholder="End date..."
-          value={this.state.edit.end_date}
+          value={this.state.edit.end}
           onChange={this.handleChange} />
         <button>Update</button>
       </form>
