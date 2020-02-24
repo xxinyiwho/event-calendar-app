@@ -1,15 +1,15 @@
 import React from 'react';
 
 const NewEventForm = ({ onNewEvent = f => f }) => {
-  let title, description, start_date, end_date
+  let title, description, start, end
 
   const submit = e => {
     e.preventDefault()
-    onNewEvent(title.value, description.value, start_date.value, end_date.value)
+    onNewEvent(title.value, description.value, start.value, end.value)
     title.value = ''
     description.value = ''
-    start_date.value = ''
-    end_date.value = ''
+    start.value = ''
+    end.value = ''
   }
 
   return (
@@ -25,10 +25,10 @@ const NewEventForm = ({ onNewEvent = f => f }) => {
             type="text"
             placeholder="Description..." required />
           <label>Start</label>
-          <input ref={input => start_date = input}
+          <input ref={input => start = input}
             type="date" required />
           <label>End</label>
-          <input ref={input => end_date = input}
+          <input ref={input => end = input}
             type="date" required />
         </div>
         <div className="submit-div">

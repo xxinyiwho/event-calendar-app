@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-import EventsContainer from './components/events/EventsContainer';
 import Header from './components/events/Header';
-import EditEventForm from './components/events/EditEventForm';
+import EventsContainer from './components/events/EventsContainer';
 import Calendar from './components/calendar/index';
-import EventsList from './components/calendar/Events'
+// import EventsList from './components/calendar/EventsList'
 
 class App extends Component {
   render() {

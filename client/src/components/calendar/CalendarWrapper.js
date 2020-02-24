@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
@@ -5,20 +7,25 @@ import interactionPlugin from '@fullcalendar/interaction'
 import '@fullcalendar/core/main.css'
 import '@fullcalendar/daygrid/main.css'
 import '@fullcalendar/timegrid/main.css'
-import React, { Component } from 'react'
-import Events from './Events'
+import React from 'react'
+import axios from 'axios'
+
 
 export default class CalendarWrapper extends React.Component {
   calendarComponentRef = React.createRef();
 
   state = {
-    calendarEvents: [
+    events: []
+  }
 
-      {
-        title: 'yes'
-      }
-
-    ]
+  componentDidMount() {
+    axios.get('api/v1/events.json')
+      .then(response => {
+        const events = response.data
+        console.log(events)
+        this.setState({ calendarEvents: events })
+      })
+      .catch(error => alert(error.response))
   }
 
   render() {
@@ -37,16 +44,4 @@ export default class CalendarWrapper extends React.Component {
       />
     )
   }
-
-  // handleDateClick = arg => {
-  //   if (window.confirm("Would you like to add an event to " + arg.dateStr + " ?")) {
-  //     this.setState({
-  //       calendarEvents: this.state.calendarEvents.concat({
-  //         title: "New Event",
-  //         start: arg.date,
-  //         allDay: arg.allDay
-  //       })
-  //     });
-  //   }
-  // };
 }

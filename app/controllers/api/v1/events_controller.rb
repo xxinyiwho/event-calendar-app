@@ -1,30 +1,28 @@
 module Api::V1
-class Api::V1::EventsController < ApplicationController
-  before_action :set_event, only: [:show, :update, :destroy]
-  skip_action :verify_authenticity_token
+class EventsController < ApplicationController
+  before_action :find_event, only: [:show, :update, :destroy]
 
-  # GET /events
   def index
     @events = Event.all
     render json: @events
   end
 
-  # GET /events/1
+  # READ
   def show
     render json: @event
   end
 
-  # POST /events
+  # CREATE
   def create
     @event = Event.new(event_params)
     if @event.save
       render json: @event
     else
-      render json: @event.errors, status: :unprocessable_entity
+      render json: @event, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /events/1
+  # UPDATE
   def update
     if @event.update(event_params)
       render json: @event
@@ -33,7 +31,7 @@ class Api::V1::EventsController < ApplicationController
     end
   end
 
-  # DELETE /events/1
+  # DELETE
   def destroy
     @event.destroy
     if @event.destroy
@@ -44,14 +42,14 @@ class Api::V1::EventsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_event
-      @event = event.find(params[:id])
+
+    def find_event
+      @event = Event.find(params[:id])
     end
 
-    # Only allow a trusted parameter "white event" through.
     def event_params
       params.require(:event).permit(:title, :description, :start_date, :end_date)
     end
+
 end
 end

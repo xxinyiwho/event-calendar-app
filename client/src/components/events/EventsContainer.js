@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import Event from './Event';
-import EditEventForm from './EditEventForm';
-import NewEventForm from './NewEventForm';
+import React, { Component } from 'react'
+import axios from 'axios'
+import Event from './Event'
+import EditEventForm from './EditEventForm'
+import NewEventForm from './NewEventForm'
 
 class EventsContainer extends Component {
 
@@ -33,9 +33,10 @@ class EventsContainer extends Component {
       .catch(error => alert(error.response))
   }
 
+
   //CREATE
-  addNewEvent = (title, description, start_date, end_date) => {
-    axios.post('/api/v1/events', { event: { title, description, start_date, end_date } })
+  addNewEvent = (title, description, start, end) => {
+    axios.post('/api/v1/events', { event: { title, description, start, end } })
       .then(response => {
         const events = [...this.state.events, response.data]
         this.setState({ events })
@@ -62,13 +63,13 @@ class EventsContainer extends Component {
     })
   }
 
-  editEvent = (id, title, description, start_date, end_date) => {
+  editEvent = (id, title, description, start, end) => {
     axios.put('/api/v1/events/' + id, {
       event: {
         title,
         description,
-        start_date,
-        end_date
+        start,
+        end
       }
     })
       .then(response => {
