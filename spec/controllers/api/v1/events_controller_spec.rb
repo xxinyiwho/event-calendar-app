@@ -21,7 +21,7 @@ RSpec.describe Api::V1::EventsController do
 
     it 'returns right number of contacts' do
       expect(json).not_to be_empty
-      expect(json.size).to eq(1)
+      expect(json.size).to eq(2)
     end
   end
 
@@ -49,7 +49,7 @@ RSpec.describe Api::V1::EventsController do
         post :create, params: { event: { title: 'MWC', description: "MWC is the largest mobile event in the world, bringing together the latest innovations and leading-edge technology alongside today's most influential visionaries.", start_date: 24/02/2020, end_date: 27/02/2020 }}
       end
 
-      it 'creates a event' do
+      it 'should creates a event' do
         expect(json.with_indifferent_access[:title]).to eq('MWC')
         expect(json.with_indifferent_access[:describe]).to eq("MWC is the largest mobile event in the world, bringing together the latest innovations and leading-edge technology alongside today's most influential visionaries.")
         expect(json.with_indifferent_access[:start_date]).to eq(24/02/2020)
@@ -62,7 +62,7 @@ RSpec.describe Api::V1::EventsController do
     end
 
     context 'when the request is invalid' do
-      before { post :create, params: { event:{ title: 'MWC' } } }
+      before { post :create, params: { event:{ title: 'New Event' } } }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
