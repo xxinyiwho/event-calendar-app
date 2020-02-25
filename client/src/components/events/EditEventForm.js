@@ -1,17 +1,21 @@
+// REACT
 import React, { Component } from 'react';
 
+// EDIT FORM
 class EditEventForm extends Component {
 
+  // SET STATE OF TARGET EVENT
   state = {
     edit: {
       id: this.props.event.id,
       title: this.props.event.title,
       description: this.props.event.description,
-      start: this.props.event.start,
-      end: this.props.event.end
+      start_date: this.props.event.start_date,
+      end_date: this.props.event.end_date
     }
   }
 
+  // ASSIGN/INPUT VALUE
   handleChange = (e) => {
     const newObject = Object.assign(this.state.edit)
     newObject[e.target.name] = e.target.value
@@ -20,12 +24,14 @@ class EditEventForm extends Component {
     })
   }
 
+  // SUBMIT VALUE
   handleSubmit = (e) => {
     e.preventDefault()
-    const { id, title, description, start, end } = this.state.edit
-    this.props.editEvent(id, title, description, start, end);
+    const { id, title, description, start_date, end_date } = this.state.edit
+    this.props.editEvent(id, title, description, start_date, end_date);
   }
 
+  // RENDER FORM
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
@@ -42,16 +48,17 @@ class EditEventForm extends Component {
         <input name="Start date"
           type="date"
           placeholder="Description..."
-          value={this.state.edit.start}
+          value={this.state.edit.start_date}
           onChange={this.handleChange} />
         <input name="End date"
           type="text"
           placeholder="End date..."
-          value={this.state.edit.end}
+          value={this.state.edit.end_date}
           onChange={this.handleChange} />
         <button>Update</button>
       </form>
     )
   }
 }
+
 export default EditEventForm;
