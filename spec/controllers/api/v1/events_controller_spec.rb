@@ -46,14 +46,14 @@ RSpec.describe Api::V1::EventsController do
   describe 'POST #create' do
     context 'when the request is valid' do
       before do
-        post :create, params: { event: { title: 'MWC', description: "MWC is the largest mobile event in the world, bringing together the latest innovations and leading-edge technology alongside today's most influential visionaries.", start_date: 24/02/2020, end_date: 27/02/2020 }}
+        post :create, params: { event: { title: 'MWC', description: "MWC is the largest mobile event in the world, bringing together the latest innovations and leading-edge technology alongside today's most influential visionaries.", start_date: 2020_02_24, enddate: 2020_02_27 }}
       end
 
       it 'should creates a event' do
         expect(json.with_indifferent_access[:title]).to eq('MWC')
-        expect(json.with_indifferent_access[:describe]).to eq("MWC is the largest mobile event in the world, bringing together the latest innovations and leading-edge technology alongside today's most influential visionaries.")
-        expect(json.with_indifferent_access[:start_date]).to eq(24/02/2020)
-        expect(json.with_indifferent_access[:end_date]).to eq(27/02/2020)
+        expect(json.with_indifferent_access[:description]).to eq("MWC is the largest mobile event in the world, bringing together the latest innovations and leading-edge technology alongside today's most influential visionaries.")
+        expect(json.with_indifferent_access[:start_date]).to eq(2020_02_24)
+        expect(json.with_indifferent_access[:end_date]).to eq(2020_02_27)
       end
 
       it 'returns status code 200' do
@@ -72,7 +72,7 @@ RSpec.describe Api::V1::EventsController do
 
   # TESTING UPDATE
   describe 'PATCH #update' do
-      before { put :update, params: { id: events.first.id, event: { title: 'MWC' } } }
+      before { put :update, params: { id: events.first.id, event: { title: 'New Event' } } }
 
       it 'updates the record' do
         expect(json.with_indifferent_access[:title]).to eq('New Event')
