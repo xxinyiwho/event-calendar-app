@@ -1,21 +1,27 @@
+// REACT
 import React, { Component } from 'react'
 import axios from 'axios'
+
 import Event from './Event'
 import EditEventForm from './EditEventForm'
 import NewEventForm from './NewEventForm'
 
+// EVENTS CRUD COMPONENT
 class EventsContainer extends Component {
 
+  //SET DEFAULT STATE
   state = {
     events: [],
     editingEventId: null
   }
 
+  // SORT DATA BY KEY
   handleSort(data) {
     data.sort((event_1, event_2) => (event_1.id > event_2.id) ? 1 : -1)
     return data
   }
 
+  //LOAD DATA AND FORMAT JSON
   componentDidMount() {
     const formats = {
       'Accept': 'application/json',
@@ -35,8 +41,8 @@ class EventsContainer extends Component {
 
 
   //CREATE
-  addNewEvent = (title, description, start, end) => {
-    axios.post('/api/v1/events', { event: { title, description, start, end } })
+  addNewEvent = (title, description, start_date, end_date) => {
+    axios.post('/api/v1/events', { event: { title, description, start_date, end_date } })
       .then(response => {
         const events = [...this.state.events, response.data]
         this.setState({ events })
@@ -63,13 +69,13 @@ class EventsContainer extends Component {
     })
   }
 
-  editEvent = (id, title, description, start, end) => {
+  editEvent = (id, title, description, start_date, end_date) => {
     axios.put('/api/v1/events/' + id, {
       event: {
         title,
         description,
-        start,
-        end
+        start_date,
+        end_date
       }
     })
       .then(response => {
@@ -86,6 +92,7 @@ class EventsContainer extends Component {
       .catch(error => alert("Please try again"));
   }
 
+  // RENDER ALL EVENTS
   render() {
     return (
 

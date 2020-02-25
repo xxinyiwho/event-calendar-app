@@ -1,6 +1,9 @@
+// REACT
 import React, { forwardRef } from 'react'
+
 import CalendarWrapper from './CalendarWrapper'
 
+// RENDER CALENDAR HEADER
 const Calendar = forwardRef(({ ...props }, ref) => {
   const CALENDAR = {
     header: {
