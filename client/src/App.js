@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import Header from './components/events/Header';
 import EventsContainer from './components/events/EventsContainer';
 import Calendar from './components/calendar/index';
