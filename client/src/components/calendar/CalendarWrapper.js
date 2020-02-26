@@ -48,6 +48,7 @@ export default class CalendarWrapper extends React.Component {
         ref={this.calendarComponentRef}
         events={this.state.calendarEvents}
         dateClick={this.handleDateClick}
+        eventColor='#2C3E50'
       />
     )
   }

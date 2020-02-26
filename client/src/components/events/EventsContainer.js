@@ -97,25 +97,27 @@ class EventsContainer extends Component {
     return (
 
       <div className="events-container">
-        {this.state.events.map((event) => {
-          if (this.state.editingEventId === event.id) {
-            return (<EditEventForm
-              event={event}
-              key={event.id}
-              editEvent={this.editEvent}
-            />)
-          } else {
-            return (
-              <Event
+        <div className="events-card">
+          {this.state.events.map((event) => {
+            if (this.state.editingEventId === event.id) {
+              return (<EditEventForm
                 event={event}
                 key={event.id}
-                onRemoveEvent={this.removeEvent}
-                editingEvent={this.editingEvent}
-              />
-            )
+                editEvent={this.editEvent}
+              />)
+            } else {
+              return (
+                <Event
+                  event={event}
+                  key={event.id}
+                  onRemoveEvent={this.removeEvent}
+                  editingEvent={this.editingEvent}
+                />
+              )
+            }
+          })
           }
-        })
-        }
+        </div>
         <br />
         <NewEventForm onNewEvent={this.addNewEvent} />
         <br />

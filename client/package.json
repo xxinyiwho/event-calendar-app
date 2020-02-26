@@ -2,24 +2,48 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "proxy": {
-    "/api": {
-      "target": "http://localhost:3001"
-    }
-  },
+  "proxy": "http://localhost:3001",
   "dependencies": {
+    "@fullcalendar/core": "^4.4.0",
+    "@fullcalendar/daygrid": "^4.4.0",
+    "@fullcalendar/interaction": "^4.4.0",
+    "@fullcalendar/react": "^4.4.0",
+    "@fullcalendar/timegrid": "^4.4.0",
     "axios": "^0.19.2",
+<<<<<<< HEAD
     "axios-on-rails": "0.0.1",
     "node-sass": "^4.13.1",
+=======
+    "bootstrap": "^4.4.1",
+    "fullcalendar": "^3.10.1",
+    "ng-fullcalendar": "^2.0.3",
+>>>>>>> CSS
     "react": "^16.2.0",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.2.0",
-    "react-scripts": "^1.0.17"
+    "react-scripts": "^3.4.0",
+    "yarn": "^1.22.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "node-sass": "^4.13.1",
+    "sass-loader": "^8.0.2"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
