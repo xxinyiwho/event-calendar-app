@@ -10,14 +10,9 @@
     "@fullcalendar/react": "^4.4.0",
     "@fullcalendar/timegrid": "^4.4.0",
     "axios": "^0.19.2",
-<<<<<<< HEAD
-    "axios-on-rails": "0.0.1",
-    "node-sass": "^4.13.1",
-=======
     "bootstrap": "^4.4.1",
     "fullcalendar": "^3.10.1",
     "ng-fullcalendar": "^2.0.3",
->>>>>>> CSS
     "react": "^16.2.0",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.2.0",
