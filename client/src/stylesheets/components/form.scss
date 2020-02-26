@@ -1,0 +1,13 @@
+.event-form {
+  margin: 50px auto;
+  padding: 48px;
+  font-size: 16px;
+  font-weight: bold;
+  border: 1px solid $justgrey;
+  .input-div{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: auto;
+    grid-row-gap: 16px;
+}
+}

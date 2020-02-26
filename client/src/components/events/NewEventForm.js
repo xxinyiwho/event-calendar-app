@@ -36,7 +36,7 @@ const NewEventForm = ({ onNewEvent = f => f }) => {
             type="date" required />
         </div>
         <div className="submit-div">
-          <button className="new-event-submit-btn">Add</button>
+          <button className="event-submit">Add</button>
         </div>
       </form>
     </div>
