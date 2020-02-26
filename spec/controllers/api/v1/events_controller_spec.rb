@@ -46,14 +46,14 @@ RSpec.describe Api::V1::EventsController do
   describe 'POST #create' do
     context 'when the request is valid' do
       before do
-        post :create, params: { event: { title: 'MWC', description: "MWC is the largest mobile event in the world, bringing together the latest innovations and leading-edge technology alongside today's most influential visionaries.", start_date: 2020_02_24, enddate: 2020_02_27 }}
+        post :create, params: { event: { title: 'Test Rspec', description: 'Testing Ruby on Rails', start_date: 2020_02_24, enddate: 2020_02_27 }}
       end
 
       it 'should creates a event' do
-        expect(json.with_indifferent_access[:title]).to eq('MWC')
-        expect(json.with_indifferent_access[:description]).to eq("MWC is the largest mobile event in the world, bringing together the latest innovations and leading-edge technology alongside today's most influential visionaries.")
-        expect(json.with_indifferent_access[:start_date]).to eq(2020_02_24)
-        expect(json.with_indifferent_access[:end_date]).to eq(2020_02_27)
+        expect(json.with_indifferent_access[:title]).to eq('Test Rspec')
+        expect(json.with_indifferent_access[:description]).to eq('Testing Ruby on Rails')
+        expect(json.with_indifferent_access[:start_date]).to eq('2020_02_24')
+        expect(json.with_indifferent_access[:end_date]).to eq('2020_02_27')
       end
 
       it 'returns status code 200' do
