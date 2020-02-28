@@ -15,7 +15,7 @@ class EditEventForm extends Component {
     }
   }
 
-  // ASSIGN/INPUT VALUE
+  // ASSIGN VALUE
   handleChange = (e) => {
     const newObject = Object.assign(this.state.edit)
     newObject[e.target.name] = e.target.value

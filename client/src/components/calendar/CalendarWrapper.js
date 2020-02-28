@@ -17,11 +17,12 @@ import axios from 'axios'
 export default class CalendarWrapper extends React.Component {
 
   calendarComponentRef = React.createRef();
-  // FETCHING EVENTS OBJECT FROM DATABASE
+
   state = {
     events: []
   }
 
+  // EVENTS FETCHED FROM DATABASE
   componentDidMount() {
     axios.get('api/v1/events.json')
       .then(response => {
