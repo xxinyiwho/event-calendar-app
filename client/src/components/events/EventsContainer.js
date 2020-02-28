@@ -21,7 +21,7 @@ class EventsContainer extends Component {
     return data
   }
 
-  //LOAD DATA AND FORMAT JSON
+  // DATA FETCHED AND FORMAT JSON
   componentDidMount() {
     const formats = {
       'Accept': 'application/json',

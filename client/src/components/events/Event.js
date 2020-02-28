@@ -12,7 +12,6 @@ const Event = ({ event, onRemoveEvent = f => f, editingEvent = f => f }) =>
       <button className="delete-btn" onClick={() => onRemoveEvent(event.id)}>Delete</button>
       <button className="edit-btn" onClick={() => editingEvent(event.id)}>Edit</button>
     </div >
-    <hr />
   </div >
 
 export default Event;
