@@ -1,28 +1,30 @@
-  {
-    "id": 2,
-    "title": "Alimentaria",
-    "description": "Going with Uniconf",
-    "start_date": "2020-04-20",
-    "end_date": "2020-04-23",
-  },
-  {
-    "id": 3,
-    "title": "Bday Yun",
-    "description": "Happy 30!",
-    "start_date": "2020-02-22",
-    "end_date": "2020-02-22",
-  },
-  {
-    "id": 1,
-    "title": "Mobile World Congress",
-    "description": "cancelled",
-    "start_date": "2020-02-24",
-    "end_date": "2020-02-27",
-  },
-  {
-    "id": 4,
-    "title": "Lunch @ Korean",
-    "description": "C/Balmes",
-    "start_date": "2020-02-29",
-    "end_date": "2020-02-29",
-  }
+  [
+    {
+      "id": 2,
+      "title": "Alimentaria",
+      "description": "Going with Uniconf",
+      "start_date": "2020-04-20",
+      "end_date": "2020-04-23"
+    },
+    {
+      "id": 3,
+      "title": "Bday Yun",
+      "description": "Happy 30!",
+      "start_date": "2020-02-22",
+      "end_date": "2020-02-22"
+    },
+    {
+      "id": 1,
+      "title": "Mobile World Congress",
+      "description": "cancelled",
+      "start_date": "2020-02-24",
+      "end_date": "2020-02-27"
+    },
+    {
+      "id": 4,
+      "title": "Lunch @ Korean",
+      "description": "C/Balmes",
+      "start_date": "2020-02-29",
+      "end_date": "2020-02-29"
+    }
+  ]
