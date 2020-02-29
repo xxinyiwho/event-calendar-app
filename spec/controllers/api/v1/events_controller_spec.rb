@@ -19,7 +19,7 @@ RSpec.describe Api::V1::EventsController do
       expect(response).to have_http_status(200)
     end
 
-    it 'returns right number of contacts' do
+    it 'returns right number of events' do
       expect(json).not_to be_empty
       expect(json.size).to eq(2)
     end
@@ -36,7 +36,7 @@ RSpec.describe Api::V1::EventsController do
       expect(response).to have_http_status(200)
     end
 
-    it 'returns the contact' do
+    it 'returns the event' do
       expect(json).not_to be_empty
       expect(json['id']).to eq(event_id)
     end
