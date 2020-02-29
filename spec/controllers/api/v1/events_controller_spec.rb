@@ -3,7 +3,7 @@ require 'pry-byebug'
 require "json"
 
 RSpec.describe Api::V1::EventsController do
-  let!(:events) { create_list(:event, 2) }
+  let!(:events) { create_list(:event, 4) }
   let(:event_id) { events.first.id }
 
   # PARSING DATA
@@ -15,13 +15,13 @@ RSpec.describe Api::V1::EventsController do
   describe "GET #index" do
     before { get :index }
 
-    it 'returns status code 200' do
-      expect(response).to have_http_status(200)
+    it 'returns status success' do
+      expect(response).to have_http_status(:success)
     end
 
-    it 'returns right number of contacts' do
+    it 'returns right number of events' do
       expect(json).not_to be_empty
-      expect(json.size).to eq(2)
+      expect(json.size).to eq(4)
     end
   end
 
@@ -32,11 +32,11 @@ RSpec.describe Api::V1::EventsController do
       assert_routing api_v1_event_path(events.first.id), controller: 'api/v1/events', action: 'show', format: :json, id: events.first.id.to_s
     end
 
-    it 'returns status code 200' do
-      expect(response).to have_http_status(200)
+    it 'returns status success' do
+      expect(response).to have_http_status(:success)
     end
 
-    it 'returns the contact' do
+    it 'returns the event' do
       expect(json).not_to be_empty
       expect(json['id']).to eq(event_id)
     end
@@ -56,8 +56,8 @@ RSpec.describe Api::V1::EventsController do
         expect(json.with_indifferent_access[:end_date]).to eq('2020_02_27')
       end
 
-      it 'returns status code 200' do
-        expect(response).to have_http_status(200)
+      it 'returns status success' do
+        expect(response).to have_http_status(:success)
       end
     end
 
@@ -78,8 +78,8 @@ RSpec.describe Api::V1::EventsController do
         expect(json.with_indifferent_access[:title]).to eq('New Event')
       end
 
-      it 'returns status code 200' do
-        expect(response).to have_http_status(200)
+      it 'returns status success' do
+        expect(response).to have_http_status(:success)
       end
   end
 
