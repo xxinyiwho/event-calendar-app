@@ -1,7 +1,7 @@
 // REACT
 import React from 'react';
 
-// NEW EVENT FORM
+// NEW EVENT FORM (using hooks made it easier than normal form like I did in edit event form)
 const NewEventForm = ({ onNewEvent = f => f }) => {
   let title, description, start_date, end_date
 
