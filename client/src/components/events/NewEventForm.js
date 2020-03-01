@@ -3,6 +3,8 @@ import React from 'react';
 
 // NEW EVENT FORM (using hooks made it easier than normal form like I did in edit event form)
 const NewEventForm = ({ onNewEvent = f => f }) => {
+
+  // DECLARE MULTIPLE STATE VARIABLE
   let title, description, start_date, end_date
 
   // CALL FUNCTION WHEN SUBMIT
