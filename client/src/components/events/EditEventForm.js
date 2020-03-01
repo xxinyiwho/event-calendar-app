@@ -5,14 +5,19 @@ import React, { Component } from 'react';
 class EditEventForm extends Component {
 
   // SET STATE OF TARGET EVENT
-  state = {
-    edit: {
-      id: this.props.event.id,
-      title: this.props.event.title,
-      description: this.props.event.description,
-      start_date: this.props.event.start_date,
-      end_date: this.props.event.end_date
+  constructor(props) {
+    super(props)
+    this.state = {
+      edit: {
+        id: this.props.event.id,
+        title: this.props.event.title,
+        description: this.props.event.description,
+        start_date: this.props.event.start_date,
+        end_date: this.props.event.end_date
+      }
     }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   // ASSIGN VALUE

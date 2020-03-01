@@ -2,5 +2,5 @@ This is a simple event calendar app, with backend RoR and frontend React. It all
 
 Features: FullCalendar, Cypress, Rspec.
 
-Please note this app needs to be initialized, in the root directory, run rails start -p 3001. then in the client directory, run yarn/npm install, then yarn/npm start.
+Please note this app needs to be initialized, in the root directory, run s start -p 3001. then in the client directory, run yarn/npm install, then yarn/npm start.
 
