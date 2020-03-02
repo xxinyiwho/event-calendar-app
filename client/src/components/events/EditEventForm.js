@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 // EDIT FORM
 class EditEventForm extends Component {
 
-  // SET STATE OF TARGET EVENT
+  // SET STATE AND BIND FUNCTION
   constructor(props) {
     super(props)
     this.state = {

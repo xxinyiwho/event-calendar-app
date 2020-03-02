@@ -1,7 +1,7 @@
 // REACT
 import React from 'react';
 
-// NEW EVENT FORM (using hooks made it easier than normal form like I did in edit event form)
+// NEW EVENT FORM
 const NewEventForm = ({ onNewEvent = f => f }) => {
 
   // DECLARE MULTIPLE STATE VARIABLE
