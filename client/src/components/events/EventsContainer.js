@@ -9,16 +9,19 @@ import NewEventForm from './NewEventForm'
 // EVENTS CRUD COMPONENT
 class EventsContainer extends Component {
 
-  //SET DEFAULT STATE
-  state = {
-    events: [],
-    editingEventId: null
-  }
+  //SET DEFAULT STATE AND BIND FUNCTION
+  constructor(props) {
 
-  // SORT DATA BY KEY
-  handleSort(data) {
-    data.sort((event_1, event_2) => (event_1.id > event_2.id) ? 1 : -1)
-    return data
+    super(props)
+    this.state = {
+      events: [],
+      editingEventId: null
+    }
+
+    this.addNewEvent = this.addNewEvent.bind(this)
+    this.removeEvent = this.removeEvent.bind(this)
+    this.editingEvent = this.editingEvent.bind(this)
+    this.editEvent = this.editEvent.bind(this)
   }
 
   // DATA FETCHED AND FORMAT JSON
@@ -31,7 +34,7 @@ class EventsContainer extends Component {
 
     axios.get('api/v1/events.json', { formats })
       .then(response => {
-        const events = this.handleSort(response.data)
+        const events = response.data
         this.setState({
           events
         })
@@ -40,7 +43,7 @@ class EventsContainer extends Component {
   }
 
 
-  //CREATE
+  // CREATE
   addNewEvent = (title, description, start_date, end_date) => {
     axios.post('/api/v1/events', { event: { title, description, start_date, end_date } })
       .then(response => {
@@ -50,7 +53,7 @@ class EventsContainer extends Component {
       .catch(error => { alert("Please try again") })
   }
 
-  //DELETE
+  // DELETE
   removeEvent = (id) => {
     axios.delete('/api/v1/events/' + id)
       .then(response => {
@@ -62,7 +65,7 @@ class EventsContainer extends Component {
       .catch(error => console.log(error.response))
   }
 
-  //UPDATE
+  // UPDATE
   editingEvent = (id) => {
     this.setState({
       editingEventId: id
@@ -83,7 +86,7 @@ class EventsContainer extends Component {
         const newList = this.state.events.filter((event) => event.id !== updatedEvent.id)
         newList.push(updatedEvent)
 
-        const events = this.handleSort(newList)
+        const events = newList
         this.setState({
           events,
           editingEventId: null
